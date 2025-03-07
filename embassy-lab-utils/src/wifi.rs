@@ -1,11 +1,11 @@
 //! This module contains functions for initializing and handling WiFi components.
 
 use cyw43::{Control, NetDriver, PowerManagementMode};
-use cyw43_pio::{DEFAULT_CLOCK_DIVIDER, PioSpi};
+use cyw43_pio::{PioSpi, RM2_CLOCK_DIVIDER};
 use defmt::*;
 use embassy_rp::{
     gpio::{Level, Output},
-    peripherals::{DMA_CH0, PIO0},
+    peripherals::{DMA_CH2, PIO0},
     pio::{InterruptHandler as PioInterruptHandler, Pio},
 };
 use static_cell::StaticCell;
@@ -17,7 +17,7 @@ embassy_rp::bind_interrupts!(struct PioIrq {
 /// This task runs the wifi chip driver. This will need to run in an infinite loop.
 #[embassy_executor::task]
 async fn cyw43_task(
-    runner: cyw43::Runner<'static, Output<'static>, PioSpi<'static, PIO0, 0, DMA_CH0>>,
+    runner: cyw43::Runner<'static, Output<'static>, PioSpi<'static, PIO0, 0, DMA_CH2>>,
 ) -> ! {
     runner.run().await
 }
@@ -50,12 +50,12 @@ pub async fn init_cy43w(
     let spi = PioSpi::new(
         &mut pio.common,
         pio.sm0,
-        DEFAULT_CLOCK_DIVIDER,
+        RM2_CLOCK_DIVIDER,
         pio.irq0,
         cs,
         p.PIN_24,
         p.PIN_29,
-        p.DMA_CH0,
+        p.DMA_CH2,
     );
 
     static STATE: StaticCell<cyw43::State> = StaticCell::new();
