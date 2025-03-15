@@ -2,7 +2,7 @@
 // |                             PM/MA lab skel                                |
 // +---------------------------------------------------------------------------+
 
-//! By default, this app prints a "Hello world" message through `defmt`. 
+//! By default, this app prints a "Hello world" message with `defmt`.
 
 #![no_std]
 #![no_main]
@@ -22,7 +22,7 @@ async fn main(_spawner: Spawner) {
     let _p = embassy_rp::init(Default::default());
 
     info!("Hello world!");
-    
+
     let delay = Duration::from_secs(1);
     loop {
         Timer::after(delay).await;

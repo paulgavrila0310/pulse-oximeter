@@ -6,5 +6,3 @@
 //! and embedded-hal more complex routines.
 
 #![no_std]
-
-pub mod wifi;
