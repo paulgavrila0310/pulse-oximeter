@@ -25,4 +25,4 @@ runner = "probe-rs run --chip RP235x"
 #   * `info`
 #   * `warn`
 #   * `error`
-DEFMT_LOG = "debug"
+DEFMT_LOG = "info"
