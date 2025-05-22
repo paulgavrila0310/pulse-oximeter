@@ -86,7 +86,7 @@ mipidsi = "0.8.0"
 heapless = "0.8"
 
 # The main embedded hal with only blocking traits
-embedded-hal-1 = { package = "embedded-hal", version = "1.0" }
+# embedded-hal-1 = { package = "embedded-hal", version = "1.0" }
 
 # Async embedded hal  
 embedded-hal-async = "1.0"
@@ -112,6 +112,18 @@ embedded-sdmmc = "0.7.0"
 # Safely cast between byte slices and slices of another built-in fundamental number type.
 byte-slice-cast = { version = "1.2.0", default-features = false }
 
+# MAX3010x crate for pulse oximetry and heart rate monitoring
+max3010x = "0.2.0"
+
+# PCD8544 crate for LCD display
+pcd8544 = "0.2.0"
+
+# shared-bus crate for I2C communication
+shared-bus = "0.3.1"
+
+# embedded-hal-compat crate for compatibility with embedded-hal
+# embedded-hal-compat = "0.13.0"
+embedded-hal = "1.0.0"
 
 # This table is used to specify the member crates of this workspace.
 [workspace]
